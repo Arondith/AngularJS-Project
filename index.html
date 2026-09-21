@@ -297,7 +297,7 @@
 
               <div class="records mt-4" ng-if="vm.activeView === 'offers'">
                 <article class="record-card"
-                         ng-repeat="offer in vm.offers | recordSearch:vm.searchText | filter:{status: vm.statusFilter || undefined} track by offer.id"
+                         ng-repeat="offer in vm.offers | recordSearch:vm.searchText | statusMatch:vm.statusFilter track by offer.id"
                          ng-class="{'record-muted': offer.status === 'matched'}">
                   <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
                     <div class="flex-grow-1">
@@ -320,13 +320,13 @@
                           <span class="match-score" ng-if="vm.bestMatchFor(offer)">Score {{ vm.bestMatchFor(offer).score }}/100</span>
                         </div>
 
-                        <div ng-if="vm.bestMatchFor(offer) as match">
+                        <div ng-if="vm.bestMatchFor(offer)">
                           <div class="d-flex flex-column flex-sm-row justify-content-between gap-3">
                             <div>
-                              <p class="mb-1"><strong>{{ match.need.organization }}</strong> — {{ match.need.quantityKg }} kg needed</p>
-                              <p class="small text-secondary mb-0">{{ match.reason }}</p>
+                              <p class="mb-1"><strong>{{ vm.bestMatchFor(offer).need.organization }}</strong> — {{ vm.bestMatchFor(offer).need.quantityKg }} kg needed</p>
+                              <p class="small text-secondary mb-0">{{ vm.bestMatchFor(offer).reason }}</p>
                             </div>
-                            <button class="btn btn-success align-self-sm-start" type="button" ng-click="vm.confirmMatch(offer, match.need)">
+                            <button class="btn btn-success align-self-sm-start" type="button" ng-click="vm.confirmMatch(offer, vm.bestMatchFor(offer).need)">
                               Confirm handoff
                             </button>
                           </div>
@@ -342,7 +342,7 @@
                   </div>
                 </article>
 
-                <div class="empty-state" ng-if="(vm.offers | recordSearch:vm.searchText | filter:{status: vm.statusFilter || undefined}).length === 0">
+                <div class="empty-state" ng-if="(vm.offers | recordSearch:vm.searchText | statusMatch:vm.statusFilter).length === 0">
                   <strong>No offers match these filters.</strong>
                   <p class="mb-0">Try clearing the search or adding a new surplus offer.</p>
                 </div>
@@ -350,7 +350,7 @@
 
               <div class="records mt-4" ng-if="vm.activeView === 'needs'">
                 <article class="record-card"
-                         ng-repeat="need in vm.needs | recordSearch:vm.searchText | filter:{status: vm.statusFilter || undefined} track by need.id"
+                         ng-repeat="need in vm.needs | recordSearch:vm.searchText | statusMatch:vm.statusFilter track by need.id"
                          ng-class="{'record-muted': need.status === 'matched'}">
                   <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
                     <div class="flex-grow-1">
@@ -373,7 +373,7 @@
                   </div>
                 </article>
 
-                <div class="empty-state" ng-if="(vm.needs | recordSearch:vm.searchText | filter:{status: vm.statusFilter || undefined}).length === 0">
+                <div class="empty-state" ng-if="(vm.needs | recordSearch:vm.searchText | statusMatch:vm.statusFilter).length === 0">
                   <strong>No community needs match these filters.</strong>
                   <p class="mb-0">Try clearing the search or recording a new community need.</p>
                 </div>
