@@ -12,427 +12,388 @@
 <body ng-controller="MainController as vm">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header class="topbar border-bottom">
-    <div class="container-xxl py-3 d-flex align-items-center justify-content-between gap-3">
-      <a class="brand text-decoration-none" href="#" aria-label="SharePlate home">
-        <span class="brand-mark" aria-hidden="true">SP</span>
-        <span>
-          <strong>SharePlate</strong>
-          <small>Food Rescue Coordination</small>
-        </span>
-      </a>
+  <header class="site-header">
+    <div class="container-xxl">
+      <nav class="navbar-shell" aria-label="Primary navigation">
+        <a class="brand" href="#" aria-label="SharePlate home">
+          <span class="brand-monogram" aria-hidden="true">S</span>
+          <span class="brand-copy">
+            <strong>SharePlate</strong>
+            <small>Food rescue coordination</small>
+          </span>
+        </a>
 
-      <div class="d-flex align-items-center gap-2">
-        <span class="status-chip">
-          <span class="status-dot"></span>
-          Local demo
-        </span>
-        <button class="btn btn-outline-dark btn-sm rounded-pill px-3" type="button" ng-click="vm.resetDemo()">
-          Reset demo
-        </button>
-      </div>
+        <div class="header-actions">
+          <span class="environment-label"><span class="environment-dot"></span>Local prototype</span>
+          <button class="quiet-button" type="button" ng-click="vm.resetDemo()">Reset demo</button>
+        </div>
+      </nav>
     </div>
   </header>
 
   <main id="main-content">
-    <section class="hero-section">
+    <section class="hero">
       <div class="container-xxl">
-        <div class="row g-5 align-items-center">
+        <div class="row g-5 align-items-end">
           <div class="col-lg-7">
-            <p class="eyebrow mb-3">ANGULARJS • BOOTSTRAP • REAL-WORLD COORDINATION</p>
-            <h1 class="display-title mb-4">Help good food reach people instead of bins.</h1>
-            <p class="hero-copy mb-4">
-              SharePlate helps food-rescue coordinators record surplus food, compare community needs,
-              and make transparent, human-approved matches.
+            <p class="section-kicker">Food rescue, coordinated with care</p>
+            <h1>Make every surplus meal easier to place.</h1>
+            <p class="hero-lead">
+              SharePlate gives food-rescue coordinators one clear place to record surplus,
+              compare community needs, and approve responsible handoffs.
             </p>
-            <div class="d-flex flex-wrap gap-3">
-              <button class="btn btn-success btn-lg rounded-pill px-4" type="button" ng-click="vm.scrollTo('workspace')">
-                Open coordination dashboard
+
+            <div class="hero-actions">
+              <button class="primary-action" type="button" ng-click="vm.scrollTo('workspace')">
+                Open coordination workspace
               </button>
-              <button class="btn btn-light btn-lg rounded-pill px-4 border" type="button" ng-click="vm.loadScenario()">
-                Load sample scenario
+              <button class="secondary-action" type="button" ng-click="vm.loadScenario()">
+                Load example
               </button>
             </div>
-            <p class="prototype-note mt-4 mb-0">
-              Portfolio prototype only. Real deployments require verified partners, food-safety controls,
-              authentication, and organization-approved logistics procedures.
+
+            <p class="hero-footnote">
+              Portfolio prototype. Food safety, partner verification, transport, and final assignment remain human responsibilities.
             </p>
           </div>
 
           <div class="col-lg-5">
-            <div class="impact-card shadow-sm">
-              <div class="d-flex justify-content-between align-items-start mb-4">
+            <aside class="summary-board" aria-label="Current coordination summary">
+              <div class="summary-board__head">
                 <div>
-                  <p class="eyebrow mb-2">LIVE DEMO IMPACT</p>
-                  <h2 class="h4 mb-0">What the workflow has coordinated</h2>
+                  <span class="overline">Today’s snapshot</span>
+                  <h2>Coordination overview</h2>
                 </div>
-                <span class="impact-icon" aria-hidden="true">↗</span>
+                <span class="summary-date">Demo data</span>
               </div>
 
-              <div class="row g-3">
-                <div class="col-6">
-                  <stat-card label="Food rescued" value="vm.metrics.kgRescued" suffix=" kg"></stat-card>
-                </div>
-                <div class="col-6">
-                  <stat-card label="Meals supported" value="vm.metrics.mealsSupported" suffix=""></stat-card>
-                </div>
-                <div class="col-6">
-                  <stat-card label="Open offers" value="vm.metrics.openOffers" suffix=""></stat-card>
-                </div>
-                <div class="col-6">
-                  <stat-card label="Open needs" value="vm.metrics.openNeeds" suffix=""></stat-card>
-                </div>
+              <div class="summary-metrics">
+                <stat-card label="Food rescued" value="vm.metrics.kgRescued" suffix=" kg"></stat-card>
+                <stat-card label="Meals supported" value="vm.metrics.mealsSupported" suffix=""></stat-card>
+                <stat-card label="Open offers" value="vm.metrics.openOffers" suffix=""></stat-card>
+                <stat-card label="Open needs" value="vm.metrics.openNeeds" suffix=""></stat-card>
               </div>
 
-              <div class="impact-footer mt-4 pt-4 border-top">
-                <span>Estimated impact</span>
-                <strong>{{ vm.metrics.co2Avoided | number:1 }} kg CO₂e avoided*</strong>
+              <div class="summary-note">
+                <span>Estimated avoided waste impact</span>
+                <strong>{{ vm.metrics.co2Avoided | number:1 }} kg CO₂e*</strong>
               </div>
-              <small class="text-secondary d-block mt-2">*Illustrative portfolio estimate, not a verified environmental accounting figure.</small>
-            </div>
+              <small>*Illustrative portfolio estimate, not verified environmental accounting.</small>
+            </aside>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="problem-strip border-top border-bottom">
-      <div class="container-xxl py-4">
-        <div class="row g-4 align-items-center">
-          <div class="col-md-4">
-            <p class="eyebrow mb-1">THE COORDINATION GAP</p>
-            <h2 class="h4 mb-0">Useful food can become waste when information moves slowly.</h2>
-          </div>
-          <div class="col-md-8">
-            <div class="row g-3">
-              <div class="col-sm-4">
-                <div class="mini-point">
-                  <span>01</span>
-                  <p class="mb-0">Donors need a fast way to describe what is available and when.</p>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="mini-point">
-                  <span>02</span>
-                  <p class="mb-0">Community groups have different quantities, priorities, and storage limits.</p>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="mini-point">
-                  <span>03</span>
-                  <p class="mb-0">Coordinators need clear matching reasons before approving a handoff.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="workspace" class="workspace-section">
+    <section class="principles">
       <div class="container-xxl">
-        <div class="section-heading d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
-          <div>
-            <p class="eyebrow mb-2">COORDINATION WORKSPACE</p>
-            <h2 class="section-title mb-2">Match supply with real community needs.</h2>
-            <p class="text-secondary mb-0">Use the forms, review suggestions, and confirm a handoff manually.</p>
+        <div class="principles-grid">
+          <div class="principle-intro">
+            <span class="overline">Why coordination matters</span>
+            <h2>Useful food can become waste when information arrives too late.</h2>
           </div>
 
-          <div class="view-switcher" role="tablist" aria-label="Dashboard views">
+          <div class="principle-item">
+            <span class="principle-index">01</span>
+            <p>Donors need a fast way to describe what is available, how much, and when it can be collected.</p>
+          </div>
+
+          <div class="principle-item">
+            <span class="principle-index">02</span>
+            <p>Community partners have different quantities, urgency levels, and storage constraints.</p>
+          </div>
+
+          <div class="principle-item">
+            <span class="principle-index">03</span>
+            <p>Coordinators need a clear reason for every suggested match before they approve a handoff.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workspace" class="workspace">
+      <div class="container-xxl">
+        <div class="workspace-heading">
+          <div>
+            <span class="overline">Coordination workspace</span>
+            <h2>Match supply with community demand.</h2>
+            <p>Record new information, review suggested matches, then confirm each handoff manually.</p>
+          </div>
+
+          <div class="view-tabs" role="tablist" aria-label="Dashboard views">
             <button type="button"
-                    class="view-btn"
                     ng-class="{active: vm.activeView === 'offers'}"
                     ng-click="vm.activeView = 'offers'">
-              Surplus offers
-              <span>{{ vm.metrics.openOffers }}</span>
+              Surplus offers <span>{{ vm.metrics.openOffers }}</span>
             </button>
             <button type="button"
-                    class="view-btn"
                     ng-class="{active: vm.activeView === 'needs'}"
                     ng-click="vm.activeView = 'needs'">
-              Community needs
-              <span>{{ vm.metrics.openNeeds }}</span>
+              Community needs <span>{{ vm.metrics.openNeeds }}</span>
             </button>
           </div>
         </div>
 
-        <div class="row g-4">
-          <div class="col-xl-4">
-            <div class="panel form-panel sticky-xl-top">
-              <div class="panel-heading">
-                <p class="eyebrow mb-2">{{ vm.formMode === 'offer' ? 'ADD SURPLUS' : 'ADD COMMUNITY NEED' }}</p>
-                <h3 class="h4 mb-2">{{ vm.formMode === 'offer' ? 'Create a food offer' : 'Create a community request' }}</h3>
-                <p class="text-secondary mb-0">
-                  {{ vm.formMode === 'offer' ? 'Record edible surplus that could be collected.' : 'Record what a verified community partner needs.' }}
-                </p>
-              </div>
-
-              <div class="segmented-control my-4">
-                <button type="button" ng-class="{active: vm.formMode === 'offer'}" ng-click="vm.formMode = 'offer'">Food offer</button>
-                <button type="button" ng-class="{active: vm.formMode === 'need'}" ng-click="vm.formMode = 'need'">Community need</button>
-              </div>
-
-              <form name="intakeForm" ng-submit="vm.submitIntake(intakeForm)" novalidate>
-                <div ng-if="vm.formMode === 'offer'">
-                  <div class="mb-3">
-                    <label class="form-label" for="donorName">Donor or business</label>
-                    <input id="donorName" class="form-control" type="text" ng-model="vm.offerForm.donorName" required maxlength="80" placeholder="Example: Sunrise Bakery">
-                    <div class="invalid-hint" ng-if="intakeForm.$submitted && !vm.offerForm.donorName">Donor name is required.</div>
-                  </div>
-
-                  <div class="row g-3">
-                    <div class="col-sm-6">
-                      <label class="form-label" for="offerCategory">Food category</label>
-                      <select id="offerCategory" class="form-select" ng-model="vm.offerForm.category" ng-options="category for category in vm.categories" required>
-                        <option value="">Choose</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="offerKg">Available kg</label>
-                      <input id="offerKg" class="form-control" type="number" min="1" max="1000" ng-model="vm.offerForm.quantityKg" required>
-                    </div>
-                  </div>
-
-                  <div class="row g-3 mt-0">
-                    <div class="col-sm-6">
-                      <label class="form-label" for="offerZone">Pickup zone</label>
-                      <select id="offerZone" class="form-select" ng-model="vm.offerForm.zone" ng-options="zone for zone in vm.zones" required>
-                        <option value="">Choose</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="offerWindow">Pickup window</label>
-                      <select id="offerWindow" class="form-select" ng-model="vm.offerForm.pickupWindow" required>
-                        <option value="">Choose</option>
-                        <option value="Within 2 hours">Within 2 hours</option>
-                        <option value="Today">Today</option>
-                        <option value="Tomorrow">Tomorrow</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-check form-switch mt-3">
-                    <input class="form-check-input" type="checkbox" role="switch" id="coldOffer" ng-model="vm.offerForm.requiresCold">
-                    <label class="form-check-label" for="coldOffer">Requires refrigerated handling</label>
-                  </div>
-
-                  <div class="mb-3 mt-3">
-                    <label class="form-label" for="offerNotes">Handling notes</label>
-                    <textarea id="offerNotes" class="form-control" rows="3" ng-model="vm.offerForm.notes" maxlength="220" placeholder="Packaging, use-by information, pickup instructions..."></textarea>
-                  </div>
-                </div>
-
-                <div ng-if="vm.formMode === 'need'">
-                  <div class="mb-3">
-                    <label class="form-label" for="orgName">Community organization</label>
-                    <input id="orgName" class="form-control" type="text" ng-model="vm.needForm.organization" required maxlength="80" placeholder="Example: Community Kitchen">
-                    <div class="invalid-hint" ng-if="intakeForm.$submitted && !vm.needForm.organization">Organization name is required.</div>
-                  </div>
-
-                  <div class="row g-3">
-                    <div class="col-sm-6">
-                      <label class="form-label" for="needCategory">Needed category</label>
-                      <select id="needCategory" class="form-select" ng-model="vm.needForm.category" ng-options="category for category in vm.categories" required>
-                        <option value="">Choose</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="needKg">Requested kg</label>
-                      <input id="needKg" class="form-control" type="number" min="1" max="1000" ng-model="vm.needForm.quantityKg" required>
-                    </div>
-                  </div>
-
-                  <div class="row g-3 mt-0">
-                    <div class="col-sm-6">
-                      <label class="form-label" for="needZone">Service zone</label>
-                      <select id="needZone" class="form-select" ng-model="vm.needForm.zone" ng-options="zone for zone in vm.zones" required>
-                        <option value="">Choose</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-6">
-                      <label class="form-label" for="needUrgency">Urgency</label>
-                      <select id="needUrgency" class="form-select" ng-model="vm.needForm.urgency" required>
-                        <option value="">Choose</option>
-                        <option value="urgent">Urgent — today</option>
-                        <option value="high">High — 24 hours</option>
-                        <option value="normal">Normal</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-check form-switch mt-3">
-                    <input class="form-check-input" type="checkbox" role="switch" id="coldNeed" ng-model="vm.needForm.hasColdStorage">
-                    <label class="form-check-label" for="coldNeed">Has refrigerated storage</label>
-                  </div>
-
-                  <div class="mb-3 mt-3">
-                    <label class="form-label" for="needNotes">Context</label>
-                    <textarea id="needNotes" class="form-control" rows="3" ng-model="vm.needForm.notes" maxlength="220" placeholder="Meal program, households served, operating constraints..."></textarea>
-                  </div>
-                </div>
-
-                <button class="btn btn-dark w-100 py-3 rounded-3 mt-2" type="submit">
-                  {{ vm.formMode === 'offer' ? 'Add surplus offer' : 'Add community need' }}
-                </button>
-              </form>
+        <div class="workspace-layout">
+          <aside class="intake-panel">
+            <div class="intake-head">
+              <span class="overline">{{ vm.formMode === 'offer' ? 'New surplus' : 'New request' }}</span>
+              <h3>{{ vm.formMode === 'offer' ? 'Add a food offer' : 'Add a community need' }}</h3>
+              <p>{{ vm.formMode === 'offer' ? 'Capture what is available for collection.' : 'Capture what a community partner needs.' }}</p>
             </div>
-          </div>
 
-          <div class="col-xl-8">
-            <div class="panel list-panel">
-              <div class="toolbar d-flex flex-column flex-md-row gap-3 justify-content-between">
-                <div>
-                  <p class="eyebrow mb-1">{{ vm.activeView === 'offers' ? 'AVAILABLE SURPLUS' : 'ACTIVE REQUESTS' }}</p>
-                  <h3 class="h4 mb-0">{{ vm.activeView === 'offers' ? 'Food offers ready for coordination' : 'Community needs waiting for support' }}</h3>
+            <div class="mode-tabs" aria-label="Intake type">
+              <button type="button" ng-class="{active: vm.formMode === 'offer'}" ng-click="vm.formMode = 'offer'">Food offer</button>
+              <button type="button" ng-class="{active: vm.formMode === 'need'}" ng-click="vm.formMode = 'need'">Community need</button>
+            </div>
+
+            <form name="intakeForm" ng-submit="vm.submitIntake(intakeForm)" novalidate>
+              <div ng-if="vm.formMode === 'offer'">
+                <div class="field-group">
+                  <label for="donorName">Donor or business</label>
+                  <input id="donorName" type="text" ng-model="vm.offerForm.donorName" required maxlength="80" placeholder="Sunrise Bakery">
+                  <small class="field-error" ng-if="intakeForm.$submitted && !vm.offerForm.donorName">Donor name is required.</small>
                 </div>
 
-                <div class="d-flex gap-2 toolbar-controls">
-                  <input class="form-control" type="search" ng-model="vm.searchText" placeholder="Search name, zone, category..." aria-label="Search records">
-                  <select class="form-select" ng-model="vm.statusFilter" aria-label="Filter by status">
-                    <option value="">All statuses</option>
-                    <option value="open">Open</option>
-                    <option value="matched">Matched</option>
-                  </select>
+                <div class="field-row">
+                  <div class="field-group">
+                    <label for="offerCategory">Food category</label>
+                    <select id="offerCategory" ng-model="vm.offerForm.category" ng-options="category for category in vm.categories" required>
+                      <option value="">Choose</option>
+                    </select>
+                  </div>
+                  <div class="field-group">
+                    <label for="offerKg">Available kg</label>
+                    <input id="offerKg" type="number" min="1" max="1000" ng-model="vm.offerForm.quantityKg" required>
+                  </div>
+                </div>
+
+                <div class="field-row">
+                  <div class="field-group">
+                    <label for="offerZone">Pickup zone</label>
+                    <select id="offerZone" ng-model="vm.offerForm.zone" ng-options="zone for zone in vm.zones" required>
+                      <option value="">Choose</option>
+                    </select>
+                  </div>
+                  <div class="field-group">
+                    <label for="offerWindow">Pickup window</label>
+                    <select id="offerWindow" ng-model="vm.offerForm.pickupWindow" required>
+                      <option value="">Choose</option>
+                      <option value="Within 2 hours">Within 2 hours</option>
+                      <option value="Today">Today</option>
+                      <option value="Tomorrow">Tomorrow</option>
+                    </select>
+                  </div>
+                </div>
+
+                <label class="switch-row">
+                  <input type="checkbox" ng-model="vm.offerForm.requiresCold">
+                  <span>Requires refrigerated handling</span>
+                </label>
+
+                <div class="field-group">
+                  <label for="offerNotes">Handling notes</label>
+                  <textarea id="offerNotes" rows="3" ng-model="vm.offerForm.notes" maxlength="220" placeholder="Packaging, use-by details, pickup instructions"></textarea>
                 </div>
               </div>
 
-              <div class="records mt-4" ng-if="vm.activeView === 'offers'">
-                <article class="record-card"
-                         ng-repeat="offer in vm.offers | recordSearch:vm.searchText | statusMatch:vm.statusFilter track by offer.id"
-                         ng-class="{'record-muted': offer.status === 'matched'}">
-                  <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
-                    <div class="flex-grow-1">
-                      <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                        <status-pill status="offer.status"></status-pill>
-                        <span class="record-meta">{{ offer.zone }}</span>
-                        <span class="record-meta">{{ offer.pickupWindow }}</span>
-                      </div>
-                      <h4 class="record-title mb-1">{{ offer.donorName }}</h4>
-                      <p class="text-secondary mb-3">{{ offer.category }} • {{ offer.quantityKg }} kg available</p>
+              <div ng-if="vm.formMode === 'need'">
+                <div class="field-group">
+                  <label for="orgName">Community organization</label>
+                  <input id="orgName" type="text" ng-model="vm.needForm.organization" required maxlength="80" placeholder="Hope Community Kitchen">
+                  <small class="field-error" ng-if="intakeForm.$submitted && !vm.needForm.organization">Organization name is required.</small>
+                </div>
 
-                      <div class="d-flex flex-wrap gap-2 mb-3">
-                        <span class="detail-chip">{{ offer.requiresCold ? 'Cold chain required' : 'Ambient handling' }}</span>
-                        <span class="detail-chip" ng-if="offer.notes">{{ offer.notes }}</span>
-                      </div>
-
-                      <div class="match-box" ng-if="offer.status === 'open'">
-                        <div class="d-flex justify-content-between align-items-center gap-3 mb-2">
-                          <strong>Best suggested match</strong>
-                          <span class="match-score" ng-if="vm.bestMatchFor(offer)">Score {{ vm.bestMatchFor(offer).score }}/100</span>
-                        </div>
-
-                        <div ng-if="vm.bestMatchFor(offer)">
-                          <div class="d-flex flex-column flex-sm-row justify-content-between gap-3">
-                            <div>
-                              <p class="mb-1"><strong>{{ vm.bestMatchFor(offer).need.organization }}</strong> — {{ vm.bestMatchFor(offer).need.quantityKg }} kg needed</p>
-                              <p class="small text-secondary mb-0">{{ vm.bestMatchFor(offer).reason }}</p>
-                            </div>
-                            <button class="btn btn-success align-self-sm-start" type="button" ng-click="vm.confirmMatch(offer, vm.bestMatchFor(offer).need)">
-                              Confirm handoff
-                            </button>
-                          </div>
-                        </div>
-
-                        <p class="text-secondary mb-0" ng-if="!vm.bestMatchFor(offer)">No compatible open community need yet.</p>
-                      </div>
-
-                      <div class="matched-note" ng-if="offer.status === 'matched'">
-                        Matched with <strong>{{ offer.matchedWith }}</strong>. Human confirmation recorded in this demo.
-                      </div>
-                    </div>
+                <div class="field-row">
+                  <div class="field-group">
+                    <label for="needCategory">Needed category</label>
+                    <select id="needCategory" ng-model="vm.needForm.category" ng-options="category for category in vm.categories" required>
+                      <option value="">Choose</option>
+                    </select>
                   </div>
-                </article>
+                  <div class="field-group">
+                    <label for="needKg">Requested kg</label>
+                    <input id="needKg" type="number" min="1" max="1000" ng-model="vm.needForm.quantityKg" required>
+                  </div>
+                </div>
 
-                <div class="empty-state" ng-if="(vm.offers | recordSearch:vm.searchText | statusMatch:vm.statusFilter).length === 0">
-                  <strong>No offers match these filters.</strong>
-                  <p class="mb-0">Try clearing the search or adding a new surplus offer.</p>
+                <div class="field-row">
+                  <div class="field-group">
+                    <label for="needZone">Service zone</label>
+                    <select id="needZone" ng-model="vm.needForm.zone" ng-options="zone for zone in vm.zones" required>
+                      <option value="">Choose</option>
+                    </select>
+                  </div>
+                  <div class="field-group">
+                    <label for="needUrgency">Urgency</label>
+                    <select id="needUrgency" ng-model="vm.needForm.urgency" required>
+                      <option value="">Choose</option>
+                      <option value="urgent">Urgent — today</option>
+                      <option value="high">High — 24 hours</option>
+                      <option value="normal">Normal</option>
+                    </select>
+                  </div>
+                </div>
+
+                <label class="switch-row">
+                  <input type="checkbox" ng-model="vm.needForm.hasColdStorage">
+                  <span>Has refrigerated storage</span>
+                </label>
+
+                <div class="field-group">
+                  <label for="needNotes">Context</label>
+                  <textarea id="needNotes" rows="3" ng-model="vm.needForm.notes" maxlength="220" placeholder="Meal program, households served, operating constraints"></textarea>
                 </div>
               </div>
 
-              <div class="records mt-4" ng-if="vm.activeView === 'needs'">
-                <article class="record-card"
-                         ng-repeat="need in vm.needs | recordSearch:vm.searchText | statusMatch:vm.statusFilter track by need.id"
-                         ng-class="{'record-muted': need.status === 'matched'}">
-                  <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
-                    <div class="flex-grow-1">
-                      <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                        <status-pill status="need.status"></status-pill>
-                        <span class="urgency-badge" ng-class="'urgency-' + need.urgency">{{ need.urgency | humanize }}</span>
-                        <span class="record-meta">{{ need.zone }}</span>
-                      </div>
-                      <h4 class="record-title mb-1">{{ need.organization }}</h4>
-                      <p class="text-secondary mb-3">{{ need.category }} • {{ need.quantityKg }} kg requested</p>
-                      <div class="d-flex flex-wrap gap-2">
-                        <span class="detail-chip">{{ need.hasColdStorage ? 'Cold storage available' : 'No cold storage' }}</span>
-                        <span class="detail-chip" ng-if="need.notes">{{ need.notes }}</span>
-                      </div>
+              <button class="submit-action" type="submit">
+                {{ vm.formMode === 'offer' ? 'Add surplus offer' : 'Add community need' }}
+              </button>
+            </form>
+          </aside>
 
-                      <div class="matched-note mt-3" ng-if="need.status === 'matched'">
-                        Matched with <strong>{{ need.matchedWith }}</strong>.
-                      </div>
-                    </div>
-                  </div>
-                </article>
+          <section class="records-panel" aria-live="polite">
+            <div class="records-toolbar">
+              <div>
+                <span class="overline">{{ vm.activeView === 'offers' ? 'Available surplus' : 'Active requests' }}</span>
+                <h3>{{ vm.activeView === 'offers' ? 'Offers ready for coordination' : 'Needs waiting for support' }}</h3>
+              </div>
 
-                <div class="empty-state" ng-if="(vm.needs | recordSearch:vm.searchText | statusMatch:vm.statusFilter).length === 0">
-                  <strong>No community needs match these filters.</strong>
-                  <p class="mb-0">Try clearing the search or recording a new community need.</p>
-                </div>
+              <div class="record-filters">
+                <input type="search" ng-model="vm.searchText" placeholder="Search records" aria-label="Search records">
+                <select ng-model="vm.statusFilter" aria-label="Filter by status">
+                  <option value="">All statuses</option>
+                  <option value="open">Open</option>
+                  <option value="matched">Matched</option>
+                </select>
               </div>
             </div>
 
-            <div class="row g-4 mt-1">
-              <div class="col-md-6">
-                <div class="principle-card h-100">
-                  <span class="principle-number">01</span>
-                  <h3 class="h5">Explainable matching</h3>
-                  <p class="mb-0">Every suggested match shows the factors that improved its score. No hidden AI decision is required.</p>
+            <div class="records-list" ng-if="vm.activeView === 'offers'">
+              <article class="record"
+                       ng-repeat="offer in vm.offers | recordSearch:vm.searchText | statusMatch:vm.statusFilter track by offer.id"
+                       ng-class="{'record--matched': offer.status === 'matched'}">
+                <div class="record-main">
+                  <div class="record-topline">
+                    <status-pill status="offer.status"></status-pill>
+                    <span>{{ offer.zone }}</span>
+                    <span>{{ offer.pickupWindow }}</span>
+                  </div>
+
+                  <div class="record-title-row">
+                    <div>
+                      <h4>{{ offer.donorName }}</h4>
+                      <p>{{ offer.category }} · {{ offer.quantityKg }} kg available</p>
+                    </div>
+                    <span class="handling-tag">{{ offer.requiresCold ? 'Cold chain' : 'Ambient' }}</span>
+                  </div>
+
+                  <p class="record-note" ng-if="offer.notes">{{ offer.notes }}</p>
+
+                  <div class="match-panel" ng-if="offer.status === 'open'">
+                    <div class="match-heading">
+                      <div>
+                        <span class="overline">Suggested match</span>
+                        <strong ng-if="vm.bestMatchFor(offer)">{{ vm.bestMatchFor(offer).need.organization }}</strong>
+                      </div>
+                      <span class="score" ng-if="vm.bestMatchFor(offer)">{{ vm.bestMatchFor(offer).score }}/100</span>
+                    </div>
+
+                    <div ng-if="vm.bestMatchFor(offer)">
+                      <p class="match-summary">
+                        {{ vm.bestMatchFor(offer).need.quantityKg }} kg requested · {{ vm.bestMatchFor(offer).need.zone }}
+                      </p>
+                      <p class="match-reason">{{ vm.bestMatchFor(offer).reason }}</p>
+                      <button class="confirm-action" type="button" ng-click="vm.confirmMatch(offer, vm.bestMatchFor(offer).need)">
+                        Confirm handoff
+                      </button>
+                    </div>
+
+                    <p class="no-match" ng-if="!vm.bestMatchFor(offer)">No compatible open community need yet.</p>
+                  </div>
+
+                  <div class="matched-line" ng-if="offer.status === 'matched'">
+                    Matched with <strong>{{ offer.matchedWith }}</strong>. Human confirmation recorded.
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <div class="principle-card h-100">
-                  <span class="principle-number">02</span>
-                  <h3 class="h5">Human approval stays mandatory</h3>
-                  <p class="mb-0">The system suggests. A person confirms the handoff after checking food safety, availability, and logistics.</p>
-                </div>
+              </article>
+
+              <div class="empty-state" ng-if="(vm.offers | recordSearch:vm.searchText | statusMatch:vm.statusFilter).length === 0">
+                <strong>No offers match these filters.</strong>
+                <span>Clear the search or add another surplus offer.</span>
               </div>
             </div>
-          </div>
+
+            <div class="records-list" ng-if="vm.activeView === 'needs'">
+              <article class="record"
+                       ng-repeat="need in vm.needs | recordSearch:vm.searchText | statusMatch:vm.statusFilter track by need.id"
+                       ng-class="{'record--matched': need.status === 'matched'}">
+                <div class="record-main">
+                  <div class="record-topline">
+                    <status-pill status="need.status"></status-pill>
+                    <span class="urgency" ng-class="'urgency--' + need.urgency">{{ need.urgency | humanize }}</span>
+                    <span>{{ need.zone }}</span>
+                  </div>
+
+                  <div class="record-title-row">
+                    <div>
+                      <h4>{{ need.organization }}</h4>
+                      <p>{{ need.category }} · {{ need.quantityKg }} kg requested</p>
+                    </div>
+                    <span class="handling-tag">{{ need.hasColdStorage ? 'Cold storage' : 'No cold storage' }}</span>
+                  </div>
+
+                  <p class="record-note" ng-if="need.notes">{{ need.notes }}</p>
+
+                  <div class="matched-line" ng-if="need.status === 'matched'">
+                    Matched with <strong>{{ need.matchedWith }}</strong>.
+                  </div>
+                </div>
+              </article>
+
+              <div class="empty-state" ng-if="(vm.needs | recordSearch:vm.searchText | statusMatch:vm.statusFilter).length === 0">
+                <strong>No community needs match these filters.</strong>
+                <span>Clear the search or record another community need.</span>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>
 
-    <section class="architecture-section border-top">
+    <section class="system-notes">
       <div class="container-xxl">
-        <div class="row g-5 align-items-start">
-          <div class="col-lg-4">
-            <p class="eyebrow mb-2">HOW IT WORKS</p>
-            <h2 class="section-title mb-3">A simple AngularJS architecture with clear responsibilities.</h2>
-            <p class="text-secondary">
-              The project separates persistence, matching logic, and UI state so the code is easy to explain in an interview.
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <span class="overline">Built for explainability</span>
+            <h2>A small system with clear responsibilities.</h2>
+            <p>
+              SharePlate uses AngularJS for application state and interaction, while keeping persistence,
+              matching logic, and presentation concerns separated.
             </p>
           </div>
 
-          <div class="col-lg-8">
-            <div class="architecture-grid">
-              <div class="architecture-card">
-                <span>1</span>
+          <div class="col-lg-7">
+            <div class="system-grid">
+              <div>
+                <span>01</span>
                 <h3>Controller</h3>
-                <p>Coordinates forms, filters, metrics, view state, and user actions.</p>
+                <p>Coordinates form state, filtering, metrics, and user actions.</p>
               </div>
-              <div class="architecture-card">
-                <span>2</span>
+              <div>
+                <span>02</span>
                 <h3>Storage factory</h3>
-                <p>Persists demo offers, needs, and impact data in LocalStorage.</p>
+                <p>Persists demo offers, needs, and handoffs in LocalStorage.</p>
               </div>
-              <div class="architecture-card">
-                <span>3</span>
+              <div>
+                <span>03</span>
                 <h3>Matching service</h3>
-                <p>Scores compatible offers and needs with transparent business rules.</p>
+                <p>Scores compatible records with transparent business rules.</p>
               </div>
-              <div class="architecture-card">
-                <span>4</span>
+              <div>
+                <span>04</span>
                 <h3>Filters & directives</h3>
-                <p>Keep repeatable presentation behavior out of the controller.</p>
+                <p>Keep repeatable presentation logic outside the controller.</p>
               </div>
             </div>
           </div>
@@ -445,10 +406,12 @@
     {{ vm.toast }}
   </div>
 
-  <footer class="site-footer border-top">
-    <div class="container-xxl py-4 d-flex flex-column flex-md-row justify-content-between gap-2">
-      <span>SharePlate • AngularJS portfolio prototype</span>
-      <span>Built by Charles Luke Templonuevo</span>
+  <footer class="site-footer">
+    <div class="container-xxl">
+      <div class="footer-inner">
+        <span>SharePlate · AngularJS portfolio prototype</span>
+        <span>Charles Luke Templonuevo</span>
+      </div>
     </div>
   </footer>
 
