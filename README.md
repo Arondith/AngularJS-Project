@@ -8,6 +8,10 @@ The app demonstrates how a lightweight web interface can help a coordinator:
 
 > SharePlate is a portfolio prototype. It is not a production food-safety, logistics, or emergency-response system.
 
+## Project Preview
+
+![SharePlate AngularJS project preview](https://d2ol7oe51mr4n9.cloudfront.net/user_3JGUTZnbwjVtgPxRXiNMsjQVIk0/0300f160-2b09-44c6-b758-0c45c0498bbd.png)
+
 ## Why this project
 
 Food-rescue work involves more than displaying donation listings. Coordinators need to compare food type, quantity, location, urgency, storage requirements, and pickup windows before deciding where an offer should go.
