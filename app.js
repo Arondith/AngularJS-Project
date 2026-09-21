@@ -7,6 +7,7 @@
     .service("MatchingService", MatchingService)
     .filter("humanize", humanizeFilter)
     .filter("recordSearch", recordSearchFilter)
+    .filter("statusMatch", statusMatchFilter)
     .directive("statusPill", statusPillDirective)
     .directive("statCard", statCardDirective)
     .controller("MainController", MainController);
@@ -199,6 +200,18 @@
           .toLowerCase();
 
         return searchable.indexOf(needle) !== -1;
+      });
+    };
+  }
+
+  function statusMatchFilter() {
+    return function (items, status) {
+      if (!angular.isArray(items) || !status) {
+        return items || [];
+      }
+
+      return items.filter(function (item) {
+        return item.status === status;
       });
     };
   }
