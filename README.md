@@ -88,6 +88,14 @@ Then visit:
 http://localhost:8000
 ~~~
 
+## Local data persistence
+
+SharePlate stores demo offers and community needs in the browser under the LocalStorage key `shareplate.demo.v1`. This means changes survive page refreshes on the same browser and origin without requiring a backend database.
+
+For a clean demo state, use the app's **Reset demo** action. It clears the saved SharePlate data and restores the built-in sample records. If LocalStorage is unavailable or blocked, the app continues to work for the current session, but changes will not persist after the page is reloaded.
+
+When testing locally, keep the same local-server URL (for example, `http://localhost:8000`) because browser storage is scoped to the page origin.
+
 ## Project structure
 
 - `index.html` — accessible AngularJS interface and Bootstrap layout
